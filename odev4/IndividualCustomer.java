@@ -1,6 +1,6 @@
 package odev4;
 
-public class IndividualCustomer extends Customer implements CustomerInterface {
+public class IndividualCustomer extends Customer implements CustomerInterface ,CustomerCheckInterface{
 	private long tcNo;
 	private String firstName;
 	private String lastName;
@@ -58,17 +58,18 @@ public class IndividualCustomer extends Customer implements CustomerInterface {
 		this.birthayYear = birthayYear;
 	}
 
-	public boolean checkTcNo(Customer customer) {
+
+	@Override
+	public boolean customercheck(Customer customer) {
 		boolean sonuc=this.getBirthayYear()==1985;
 		return	sonuc;
-     }
-		
+	}
 	
 
 	@Override
 	public void add(Customer customer) {
 		// TODO Auto-generated method stub
-		if(checkTcNo(customer)) {
+		if(customercheck(customer)) {
 		System.out.println("Bireysel Müþteri Eklendi :" +" ID : "+this.getId()+" Adý : "+this.getFirstName()+" Soyadý : "+this.getLastName());
 		}
 		else {
@@ -80,7 +81,7 @@ public class IndividualCustomer extends Customer implements CustomerInterface {
 
 	@Override
 	public void update(Customer customer) {
-		if(checkTcNo(customer)) {
+		if(customercheck(customer)) {
 		System.out.println("Bireysel Müþteri güncellendi :" +" ID : "+this.getId()+" Adý : "+this.getFirstName()+" Soyadý : "+this.getLastName());
 		}
 		else {
@@ -95,6 +96,8 @@ public class IndividualCustomer extends Customer implements CustomerInterface {
 		System.out.println("Bireysel Müþteri Silindi :" +" ID : "+this.getId()+" Adý : "+this.getFirstName()+" Soyadý : "+this.getLastName());
 		
 	}
+
+
 
 
 	
